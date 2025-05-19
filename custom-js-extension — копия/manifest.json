@@ -1,0 +1,89 @@
+{
+    "manifest_version": 3,
+    "name": "Custom JS Injector",
+    "version": "1.2",
+    "description": "Фильтрация задач на unu.im по времени выполнения",
+    "permissions": ["scripting", "activeTab", "storage"],
+    "host_permissions": ["https://unu.im/*"],
+    "content_scripts": [
+        {
+            "matches": ["https://unu.im/*"],
+            "js": ["time.js"],
+            "run_at": "document_idle"
+        },
+        {
+            "matches": ["https://unu.im/tasks/search?price_from=&price_to=11&id=&button=1&is_search=1"],
+            "js": ["subs.js"],
+            "run_at": "document_idle"
+        },
+        {
+            "matches": ["https://unu.im/tasks/report/*"],
+            "js": ["inject-block.js"],
+            "run_at": "document_idle"
+        },
+        {
+            "matches": ["https://unu.im/tasks/works"],
+            "js": ["auto-close.js"],
+            "run_at": "document_idle"
+        },
+        {
+            "matches": ["https://unu.im/competitions"],
+            "js": ["balance-inject.js"],
+            "run_at": "document_idle"
+        },
+        {
+            "matches": ["https://unu.im/tasks/search?price_from=&price_to=11&tar%5B%5D=1&tar%5B%5D=2&tar%5B%5D=3&tar%5B%5D=4&tar%5B%5D=48&tar%5B%5D=50&tar%5B%5D=64&tar%5B%5D=65&id=&button=1&is_search=1"],
+            "js": ["subs.js"],
+            "run_at": "document_idle"
+        },
+        {
+            "matches": ["https://unu.im/money/withdrawal/12"],
+            "js": ["withdrawal.js"],
+            "run_at": "document_idle"
+        },
+        {
+            "matches": ["https://unu.im/tasks/search?price_from=&price_to=11&tar%5B%5D=13&tar%5B%5D=14&tar%5B%5D=15&tar%5B%5D=16&tar%5B%5D=62&tar%5B%5D=17&tar%5B%5D=18&tar%5B%5D=19&tar%5B%5D=20&tar%5B%5D=63&tar%5B%5D=21&tar%5B%5D=22&tar%5B%5D=23&tar%5B%5D=24&tar%5B%5D=61&tar%5B%5D=36&tar%5B%5D=37&tar%5B%5D=38&tar%5B%5D=40&tar%5B%5D=45&tar%5B%5D=46&tar%5B%5D=56&tar%5B%5D=57&tar%5B%5D=70&tar%5B%5D=72&tar%5B%5D=73&tar%5B%5D=74&tar%5B%5D=79&id=&button=1&is_search=1"],
+            "js": ["subs.js"],
+            "run_at": "document_idle"
+        },
+        {
+            "matches": ["https://unu.im/tasks/search/*"],
+            "js": ["subs.js"],
+            "run_at": "document_idle"
+        },
+        {
+            "matches": ["https://www.avito.ru/*"],
+            "js": ["avito.js"],
+            "run_at": "document_idle"
+        },
+        {
+            "matches": ["https://www.avito.ru/brands/*"],
+            "js": ["avito_brands.js"],
+            "run_at": "document_idle"
+        },
+        {
+            "matches": ["https://www.avito.ru/brands/*"],
+            "js": ["avito_brands.js"],
+            "run_at": "document_idle"
+        }, 
+        {
+            "matches": ["https://unu.im/*"],
+            "js": ["theme-toggle.js"],
+            "run_at": "document_idle"
+        }        
+        
+
+        
+    ],
+    "background": {
+        "service_worker": "background.js"
+    },
+    "action": {
+        "default_popup": "popup.html",
+        "default_icon": {
+            "16": "icons/icon16.png",
+            "48": "icons/icon48.png",
+            "128": "icons/icon128.png"
+        }
+    }
+}
